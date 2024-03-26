@@ -1,0 +1,86 @@
+﻿<Window x:Class="DBApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DBApp"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d" 
+        Height="700" Width="450"  
+        Background="{x:Null}"
+        AllowsTransparency="True"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        FontSize="18"
+        FontFamily="Candara">
+
+    <Border  
+          Background="{StaticResource MaterialDesignPaper}"
+          Margin="20"
+          BorderBrush="LightGray"
+          CornerRadius="10 10 10 10" 
+          BorderThickness="1"
+          ClipToBounds="True" >
+        <Grid>
+            <Border  Height="50" 
+                         CornerRadius="10 10 0 0" 
+                         Margin="0 0 0 0" 
+                         Background="{StaticResource MaterialDesignPaper}" 
+                         VerticalAlignment="Top" 
+                         MouseDown="Border_MouseDown">
+                <Button Style="{StaticResource MaterialDesignIconButton}"  Margin="0 10 10 0" Width="40" Height="40"  HorizontalAlignment="Right" VerticalAlignment="Top" Click="closeButton_Click" x:Name="closeButton">
+                    <materialDesign:PackIcon Kind="WindowClose"  
+                         Width="30" Height="30"  
+                         Foreground="LightGray" 
+                         />
+                </Button>
+
+            </Border>
+            <StackPanel  Margin="0 100 0 0">
+                <TextBlock Text="Добро пожаловать"
+                           Margin="0 40 0 0"
+                            HorizontalAlignment="Center"
+                            FontSize="28"
+                            Foreground="#FF5F5F5F"
+                            FontWeight="Bold"/>
+                 
+                <TextBox 
+                   
+                    materialDesign:HintAssist.Hint="Логин" 
+                    materialDesign:HintAssist.Foreground="{StaticResource main_color}"  
+                    BorderBrush="{StaticResource MaterialDesignDivider}"
+                    Style="{StaticResource MaterialDesignOutlinedTextBox}" 
+                    Margin="0,50,0,0"  
+                    Width="300" 
+                    x:Name="loginTextBox" 
+                    MaxLength="20"/>
+                <PasswordBox
+                    
+                    Margin="0 30 0 0"
+                    x:Name="passwordBox"
+                    Width="300"  
+                    materialDesign:HintAssist.Hint="Пароль" 
+                    materialDesign:HintAssist.Foreground="{StaticResource main_color}"  
+                     BorderBrush="{StaticResource MaterialDesignDivider}"
+                    Style="{StaticResource MaterialDesignOutlinedPasswordBox}"
+                    MaxLength="36" Cursor="Arrow"/>
+                <Button
+                    Margin="0 30 0 0"
+                    x:Name="enterButton" 
+                    Click="enterButton_Click"
+                    Style="{StaticResource MaterialDesignFlatMidBgButton}" 
+                    Height="53"
+                    Width="300"
+                    materialDesign:ButtonAssist.CornerRadius="10"
+                    FontSize="18"
+                    Content="Войти"
+                    Foreground="White"
+                     Background="{StaticResource main_color}"  
+                    />
+               
+            </StackPanel>
+        </Grid>
+    </Border>
+   
+
+</Window>
