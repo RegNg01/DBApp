@@ -48,10 +48,7 @@ namespace DBApp
         {
             if (navBarListView.SelectedItem != null)
             {
-                ListViewItem selectedItem = (ListViewItem)navBarListView.SelectedItem;
-                int tag = int.Parse(selectedItem.Tag.ToString());
-
-                switch (tag)
+                switch (Convert.ToInt32(navBarListView.SelectedValue))
                 {
                     case 1:
                         navFrame.Content = new Log();

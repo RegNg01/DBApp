@@ -29,9 +29,9 @@
             <Border x:Name="navBar" Background="{StaticResource main_color2}" HorizontalAlignment="Left" Width="137" CornerRadius="10,0,0,10">
                 <StackPanel>
 
-                    <ListView Margin="0,100,0,0"  FontSize="18" ScrollViewer.HorizontalScrollBarVisibility="Disabled"  x:Name="navBarListView"  SelectionChanged="navBarListView_SelectionChanged"  BorderBrush="Transparent" Background="Transparent" FontWeight="Bold">
+                    <ListView SelectedValuePath="Tag"   Margin="0,100,0,0"  FontSize="18" ScrollViewer.HorizontalScrollBarVisibility="Disabled"  x:Name="navBarListView"  SelectionChanged="navBarListView_SelectionChanged"  BorderBrush="Transparent" Background="Transparent" FontWeight="Bold">
 
-                        <ListViewItem Tag="1" Height="80" HorizontalContentAlignment="Center" IsSelected="True" >
+                        <ListViewItem Tag="1" Height="80" HorizontalContentAlignment="Center" IsSelected="True"  >
                             <Label Content="Сруб"/>
                         </ListViewItem>
                         <ListViewItem Tag="2" Height="80" HorizontalContentAlignment="Center">
