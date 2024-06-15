@@ -1,0 +1,169 @@
+﻿<Page x:Class="DBApp.Pages.Lumber"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:DBApp.Pages"
+      mc:Ignorable="d" 
+       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      d:DesignHeight="450" d:DesignWidth="800"
+       Title="Пиломатериалы" Background="{StaticResource MaterialDesignPaper}" FontSize="18" >
+
+    <Grid>
+        <Label Content="Пиломатериалы" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,0"  VerticalAlignment="Top"/>
+        <ScrollViewer Style="{StaticResource MaterialDesignScrollViewer}" Margin="0,74,0,0" VerticalAlignment="Top"  HorizontalAlignment="Center" >
+            <WrapPanel Orientation="Vertical"  >
+                <Expander   Header="Необрезные доски" Foreground="{StaticResource main_color}" IsExpanded="True" MinWidth="800" FontSize="18" >
+
+                    <ListView   ItemsSource="{Binding LumberModels}"  Style="{StaticResource MaterialDesignListView}" HorizontalAlignment="Left" Margin ="10 0 0 0" x:Name="lumberListView" MinWidth="790" SelectionChanged="lumberListView_SelectionChanged">
+                        <ListView.View>
+                            <GridView>
+                                <GridView.ColumnHeaderContainerStyle>
+                                    <Style TargetType="GridViewColumnHeader" BasedOn="{StaticResource {x:Type GridViewColumnHeader}}">
+                                        <Setter Property="HorizontalAlignment" Value="Left"/>
+                                        <Setter Property="Padding" Value="5 5 5 5"/>
+
+                                    </Style>
+                                </GridView.ColumnHeaderContainerStyle>
+                                <GridViewColumn Header="ID" DisplayMemberBinding="{Binding ID}" Width="40"/>
+                                <GridViewColumn Header="Порода" DisplayMemberBinding="{Binding Type}" Width="70"/>
+                                <GridViewColumn Header="Сорт" DisplayMemberBinding="{Binding Grade}" Width="60"/>
+                                <GridViewColumn Header="Сечение, мм" DisplayMemberBinding="{Binding Dimensions}" Width="100"/>
+                                <GridViewColumn Header="Длина, м" DisplayMemberBinding="{Binding Length}" Width="80"/>
+
+                                <GridViewColumn Header="Объем, м³" DisplayMemberBinding="{Binding Volume}" Width="90"/>
+                                <GridViewColumn Header="Количество, шт" DisplayMemberBinding="{Binding Quantity}" Width="115"/>
+                                <GridViewColumn Header="Влажность, %" DisplayMemberBinding="{Binding Wetness}" Width="130"/>
+                                <GridViewColumn Width="40">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button Width="30" Height="30" Style="{StaticResource MaterialDesignIconButton}" Click="editButton_Click" x:Name="editButton">
+                                                <materialDesign:PackIcon Kind="Edit"   Width="30"
+                                Foreground="{StaticResource main_color2}"/>
+                                            </Button>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Width="40">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button  Width="30" Height="30" Style="{StaticResource MaterialDesignIconButton}" Click="deleteButton_Click" x:Name="deleteButton">
+                                                <materialDesign:PackIcon Kind="Delete"   Width="30"
+                                Foreground="{StaticResource main_color2}"/>
+                                            </Button>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Expander>
+                <Expander  Header="Обрезные доски" Foreground="{StaticResource main_color}" IsExpanded="True" MinWidth="800">
+                    <Grid>
+                        <Button  
+                     FontWeight="Bold"
+                     Margin="485,-41,0,0"
+                     Style="{StaticResource MaterialDesignFlatButton}"
+                     HorizontalAlignment="Left" 
+                     Content="В заготовки"
+                     VerticalAlignment="Top"
+                     x:Name="productButton"  
+     
+                     materialDesign:ButtonAssist.CornerRadius="10"
+ 
+                     Foreground="{StaticResource main_color}" Click="productButton_Click" Cursor="Hand"/>
+                        <ListView   ItemsSource="{Binding LumberModels}" SelectionChanged="cutLumberListView_SelectionChanged"  Style="{StaticResource MaterialDesignListView}" HorizontalAlignment="Left" x:Name="cutLumberListView" Width="770" Margin="10,0,0,0" MinWidth="790" >
+                            <ListView.View>
+                                <GridView>
+                                    <GridView.ColumnHeaderContainerStyle>
+                                        <Style TargetType="GridViewColumnHeader" BasedOn="{StaticResource {x:Type GridViewColumnHeader}}">
+                                            <Setter Property="HorizontalAlignment" Value="Left"/>
+                                            <Setter Property="Padding" Value="5 5 5 5"/>
+
+                                        </Style>
+                                    </GridView.ColumnHeaderContainerStyle>
+                                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding ID}" Width="40"/>
+                                    <GridViewColumn Header="Порода" DisplayMemberBinding="{Binding Type}" Width="70"/>
+                                    <GridViewColumn Header="Сорт" DisplayMemberBinding="{Binding Grade}" Width="60"/>
+                                    <GridViewColumn Header="Сечение, мм" DisplayMemberBinding="{Binding Dimensions}" Width="100"/>
+                                    <GridViewColumn Header="Длина, м" DisplayMemberBinding="{Binding Length}" Width="80"/>
+
+                                    <GridViewColumn Header="Объем, м³" DisplayMemberBinding="{Binding Volume}" Width="90"/>
+                                    <GridViewColumn Header="Количество, шт" DisplayMemberBinding="{Binding Quantity}" Width="115"/>
+                                    <GridViewColumn Header="Влажность, %" DisplayMemberBinding="{Binding Wetness}" Width="130"/>
+                                    <GridViewColumn Width="40">
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Button Width="30" Height="30" Style="{StaticResource MaterialDesignIconButton}" Click="editButton_Click" x:Name="editButton">
+                                                    <materialDesign:PackIcon Kind="Edit"   Width="30"
+                                             Foreground="{StaticResource main_color2}"/>
+                                                </Button>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                    <GridViewColumn Width="40">
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Button  Width="30" Height="30" Style="{StaticResource MaterialDesignIconButton}" Click="deleteButton_Click" x:Name="deleteButton">
+                                                    <materialDesign:PackIcon Kind="Delete"   Width="30"
+                                        Foreground="{StaticResource main_color2}"/>
+                                                </Button>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </Grid>
+                </Expander>
+            </WrapPanel>
+        </ScrollViewer>
+        <Button  
+        FontWeight="Bold"
+        Margin="583,42,0,0"
+        Style="{StaticResource MaterialDesignFlatButton}"
+        HorizontalAlignment="Left" 
+        Content="На сушку"
+         VerticalAlignment="Top"
+        x:Name="dryButton"  
+            
+        materialDesign:ButtonAssist.CornerRadius="10"
+ 
+        Foreground="{StaticResource main_color}" Click="dryButton_Click" Cursor="Hand"/>
+        <Button  
+            FontWeight="Bold"
+            Margin="489,42,0,0"
+            Style="{StaticResource MaterialDesignFlatButton}"
+            HorizontalAlignment="Left" 
+            Content="Обрезка"
+  VerticalAlignment="Top"
+                x:Name="shaveButton"  
+         materialDesign:ButtonAssist.CornerRadius="10"
+ 
+         Foreground="{StaticResource main_color}" Click="shaveButton_Click" Cursor="Hand"/>
+        <Button  
+            FontWeight="Bold"
+            Margin="679,42,0,0"
+            Style="{StaticResource MaterialDesignFlatButton}"
+            HorizontalAlignment="Left" 
+            Content="Добавить"
+            VerticalAlignment="Top"
+            x:Name="addButton"  
+            
+            materialDesign:ButtonAssist.CornerRadius="10"
+ 
+            Foreground="{StaticResource main_color}" Click="addButton_Click" Cursor="Hand"/>
+        <TextBox Background="White" materialDesign:HintAssist.Hint="Поиск" 
+      materialDesign:HintAssist.Foreground="{StaticResource main_color}"  
+      BorderBrush="{StaticResource MaterialDesignDivider}"
+      Style="{StaticResource MaterialDesignOutlinedTextBox}"
+               Padding="4"
+               FontSize="15"
+               Height="30"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Top"
+      x:Name="searchTextBox" 
+       Margin="15,36,0,0" Width="243" TextChanged="searchTextBox_TextChanged"/>
+
+    </Grid>
+</Page>

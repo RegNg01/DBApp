@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:DBApp"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             StartupUri="MainWindow.xaml">
+             StartupUri="Windows/MainWindow.xaml">
     <Application.Resources>
 
         <ResourceDictionary>
@@ -15,6 +15,7 @@
             </ResourceDictionary.MergedDictionaries>
             <SolidColorBrush x:Key="main_color" Color="#FF0F4E7A"/>
             <SolidColorBrush x:Key="main_color2" Color="#FF698FA9"/>
+            <SolidColorBrush x:Key="main_color3" Color="#FF9EC0D7"/>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

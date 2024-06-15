@@ -6,24 +6,23 @@
         xmlns:local="clr-namespace:DBApp"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d" 
-        Height="700" Width="450"  
+        Height="629" Width="450"  
         Background="{x:Null}"
         AllowsTransparency="True"
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
-        FontSize="18"
-        FontFamily="Candara">
+        FontSize="18" >
 
     <Border  
           Background="{StaticResource MaterialDesignPaper}"
           Margin="20"
           BorderBrush="LightGray"
-          CornerRadius="10 10 10 10" 
+          CornerRadius="5 5 5 5" 
           BorderThickness="1"
           ClipToBounds="True" >
         <Grid>
             <Border  Height="50" 
-                         CornerRadius="10 10 0 0" 
+                         CornerRadius="5 5 0 0" 
                          Margin="0 0 0 0" 
                          Background="{StaticResource MaterialDesignPaper}" 
                          VerticalAlignment="Top" 
@@ -36,7 +35,7 @@
                 </Button>
 
             </Border>
-            <StackPanel  Margin="0 100 0 0">
+            <StackPanel  Margin="0 60 0 0">
                 <TextBlock Text="Добро пожаловать"
                            Margin="0 40 0 0"
                             HorizontalAlignment="Center"
@@ -51,9 +50,10 @@
                     BorderBrush="{StaticResource MaterialDesignDivider}"
                     Style="{StaticResource MaterialDesignOutlinedTextBox}" 
                     Margin="0,50,0,0"  
+                   
                     Width="300" 
                     x:Name="loginTextBox" 
-                    MaxLength="20"/>
+                    MaxLength="20" Padding="16,14,12,14"/>
                 <PasswordBox
                     
                     Margin="0 30 0 0"
@@ -63,7 +63,7 @@
                     materialDesign:HintAssist.Foreground="{StaticResource main_color}"  
                      BorderBrush="{StaticResource MaterialDesignDivider}"
                     Style="{StaticResource MaterialDesignOutlinedPasswordBox}"
-                    MaxLength="36" Cursor="Arrow"/>
+                    MaxLength="36" Cursor="Arrow" Padding="16,14,12,14"/>
                 <Button
                     Margin="0 30 0 0"
                     x:Name="enterButton" 
@@ -77,7 +77,19 @@
                     Foreground="White"
                      Background="{StaticResource main_color}"  
                     />
-               
+                <Button
+    Margin="0 30 0 0"
+    x:Name="registerButton" 
+    Click="registerButton_Click"
+    Style="{StaticResource MaterialDesignFlatButton}" 
+    Height="53"
+    Width="300"
+    materialDesign:ButtonAssist.CornerRadius="10"
+    FontSize="18"
+    Content="Регистрация"
+    Foreground="{StaticResource main_color}"
+     Background="{x:Null}"  
+    />
             </StackPanel>
         </Grid>
     </Border>

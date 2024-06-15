@@ -4,11 +4,63 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:DBApp.Pages"
-      mc:Ignorable="d" 
+      mc:Ignorable="d"   xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Saw" Background="{StaticResource MaterialDesignPaper}" FontSize="18">
+      Title="Saw" Background="{StaticResource MaterialDesignPaper}" FontSize="18" >
 
     <Grid>
-        <Label Content="Распил" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top"/>
+        <Label Content="Распиловка" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Top"/>
+        <ListView Margin="0,71,0,29" ItemsSource="{Binding LumberModels}"  Style="{StaticResource MaterialDesignListView}" HorizontalAlignment="Center"   x:Name="sawListView" MinWidth="800" >
+            <ListView.View>
+                <GridView>
+                    <GridView.ColumnHeaderContainerStyle>
+                        <Style TargetType="GridViewColumnHeader" BasedOn="{StaticResource {x:Type GridViewColumnHeader}}">
+                            <Setter Property="HorizontalAlignment" Value="Left"/>
+                            <Setter Property="Padding" Value="5 5 5 5"/>
+
+                        </Style>
+                    </GridView.ColumnHeaderContainerStyle>
+                    <GridViewColumn Header="Порода" DisplayMemberBinding="{Binding Type}"  Width="70"/>
+                    <GridViewColumn Header="Сорт" DisplayMemberBinding="{Binding Grade}" Width="70" />
+                    <GridViewColumn Header="Объем, м³" DisplayMemberBinding="{Binding volumelog}"  Width="85" />
+                    <GridViewColumn Width="90">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="======>" HorizontalAlignment="Center"/>
+
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Сечение, мм" DisplayMemberBinding="{Binding Dimensions}"  Width="100"/>
+
+                    <GridViewColumn Header="Длина, м" DisplayMemberBinding="{Binding Length}" Width="80" />
+                    <GridViewColumn Header="Количество, шт" DisplayMemberBinding="{Binding Quantity}" Width="120" />
+                    <GridViewColumn Header="Объем, м³" DisplayMemberBinding="{Binding Volume}" Width="130" />
+               
+                    <GridViewColumn Width="40">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button  Width="30" Height="30" Style="{StaticResource MaterialDesignIconButton}" Click="okButton_Click" x:Name="okButton">
+                                    <materialDesign:PackIcon Kind="Check"   Width="30"
+                                Foreground="{StaticResource main_color2}"/>
+                                </Button>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <TextBox Background="White" materialDesign:HintAssist.Hint="Поиск" 
+            materialDesign:HintAssist.Foreground="{StaticResource main_color}"  
+            BorderBrush="{StaticResource MaterialDesignDivider}"
+            Style="{StaticResource MaterialDesignOutlinedTextBox}"
+            Padding="4"
+            FontSize="15"
+            Height="30"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            x:Name="searchTextBox" 
+            Margin="15,36,0,0" Width="243" TextChanged="searchTextBox_TextChanged"/>
+
     </Grid>
 </Page>

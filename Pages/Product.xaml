@@ -1,0 +1,151 @@
+﻿<Page x:Class="DBApp.Pages.Product"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:DBApp.Pages"
+      mc:Ignorable="d" 
+            xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      d:DesignHeight="450" d:DesignWidth="800"
+       Title="Заготовки" Background="{StaticResource MaterialDesignPaper}" FontSize="18" >
+
+    <Grid>
+        
+        <Label Content="Заготовки" FontWeight="Bold" HorizontalAlignment="Center"  VerticalAlignment="Top"/>
+
+
+        <ListView  ItemsSource="{Binding productModels}"  Style="{StaticResource MaterialDesignListView}" HorizontalAlignment="Center" x:Name="productListView"  MinWidth="800"  Margin="0,71,0,25" >
+            <ListView.View>
+                <GridView>
+                    <GridView.ColumnHeaderContainerStyle>
+                        <Style TargetType="GridViewColumnHeader" BasedOn="{StaticResource {x:Type GridViewColumnHeader}}">
+                            <Setter Property="HorizontalAlignment" Value="Left"/>
+                            <Setter Property="Padding" Value="5 5 5 5"/> 
+                        </Style>
+                    </GridView.ColumnHeaderContainerStyle>
+                    <GridViewColumn DisplayMemberBinding="{Binding ID}" Width="40">
+                        <GridViewColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="ID" LineHeight="34.58"   TextWrapping="Wrap" TextAlignment="Center"  />
+                            </DataTemplate>
+                        </GridViewColumn.HeaderTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Width="80">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Name}" TextWrapping="Wrap" TextAlignment="Left"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                        <GridViewColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="Название" LineHeight="34.58"   TextWrapping="Wrap" TextAlignment="Center"  />
+                            </DataTemplate>
+                        </GridViewColumn.HeaderTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Type}" Width="70">
+                        <GridViewColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="Порода" LineHeight="34.58"   TextWrapping="Wrap" TextAlignment="Center"  />
+                            </DataTemplate>
+                        </GridViewColumn.HeaderTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Grade}" Width="50">
+                        <GridViewColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="Сорт" LineHeight="34.58"   TextWrapping="Wrap" TextAlignment="Center"  />
+                            </DataTemplate>
+                        </GridViewColumn.HeaderTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Dimensions}" Width="90">
+                        <GridViewColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <TextBlock   Text="Размеры, мм"   TextWrapping="Wrap" TextAlignment="Center"/>
+                            </DataTemplate>
+                        </GridViewColumn.HeaderTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Width="85">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Description}" TextWrapping="Wrap" TextAlignment="Left"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                        <GridViewColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="Описание" LineHeight="34.58"   TextWrapping="Wrap" TextAlignment="Center"  />
+                            </DataTemplate>
+                        </GridViewColumn.HeaderTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Width="95" DisplayMemberBinding="{Binding Quantity}">
+                        <GridViewColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="Количество, шт"   TextWrapping="Wrap" TextAlignment="Center"/>
+                            </DataTemplate>
+                        </GridViewColumn.HeaderTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Volume}" Width="65">
+                        <GridViewColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="Объем, м³"   TextWrapping="Wrap" TextAlignment="Center"/>
+                            </DataTemplate>
+                        </GridViewColumn.HeaderTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Price}" Width="55">
+                        <GridViewColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="Цена, р"   TextWrapping="Wrap" TextAlignment="Center"  />
+                            </DataTemplate>
+                        </GridViewColumn.HeaderTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Width="85">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Client}" TextWrapping="Wrap" TextAlignment="Left"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                        <GridViewColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="Клиент" LineHeight="34.58"   TextWrapping="Wrap" TextAlignment="Center"  />
+                            </DataTemplate>
+                        </GridViewColumn.HeaderTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Width="40">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Visibility="Hidden" Width="30" Height="30" Style="{StaticResource MaterialDesignIconButton}"  x:Name="editButton">
+                                    <materialDesign:PackIcon Kind="Edit"   Width="30"
+         Foreground="{StaticResource main_color2}"/>
+                                </Button>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Width="40">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button  Width="30" Height="30" Style="{StaticResource MaterialDesignIconButton}" Click="deleteButton_Click" x:Name="deleteButton">
+                                    <materialDesign:PackIcon Kind="Delete"   Width="30"
+    Foreground="{StaticResource main_color2}"/>
+                                </Button>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <TextBox  materialDesign:HintAssist.Hint="Поиск" 
+            materialDesign:HintAssist.Foreground="{StaticResource main_color}"  
+            BorderBrush="{StaticResource MaterialDesignDivider}"
+            Style="{StaticResource MaterialDesignOutlinedTextBox}"
+            Padding="4"
+            FontSize="15"
+                  Background="White"
+            Height="30"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            x:Name="searchTextBox" 
+            Margin="15,36,0,0" Width="243" TextChanged="searchTextBox_TextChanged"/>
+
+
+
+    </Grid>
+</Page>
